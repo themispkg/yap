@@ -26,7 +26,7 @@ case "${1}" in
             ;;
             *)
                 yap:core:getlib "yap/build"
-                yap:build:main --generate-full
+                yap:build:main -gf
             ;;
         esac
     ;;

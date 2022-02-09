@@ -7,10 +7,33 @@ yap:build:main() {
     yap:core:chkimport
     case "${1}" in
         [gG][eE][nN][eE][rR][aA][tT][eE]-[fF][uU][lL][lL]|--[gG][eE][nN][eE][rR][aA][tT][eE]-[fF][uU][lL][lL]|-[gG][fF])
-            :
+            cat - > install.sh <<INSTALLFILE
+#!/bin/bash
+
+# Yap Install File Created Automatically by yap ${yap_version}
+
+INSTALLFILE
+            cat "${yap_lib}/colorsh.sh" | grep -v '^#' >> install.sh
+            echo "" >> install.sh
+            cat "${yap_lib}/tuiutils.sh" | grep -v '^#' >> install.sh
+            echo "" >> install.sh
+            cat "${yap_lib}/alternatives.sh" | grep -v '^#' >> install.sh
+            echo "" >> install.sh
+            cat "${yap_lib}/osutils.sh" | grep -v '^#' >> install.sh
+            echo "" >> install.sh
+            cat "${yap_lib}/yap/base-utils.sh" | grep -v '^#' >> install.sh
+            if [[ -f "${tmpd}/source" ]] ; then
+                local i=""
+                local IFS=$" "
+                for i in $(cat ${tmpd}/source) ; do
+                    cat "${yap_lib}/yap/${i}.sh" | grep -v '^#' >> install.sh
+                    echo "" >> install.sh
+                done
+            fi
+            echo "" >> install.sh
         ;;
         *)
-            cat - > ./"yap-build.sh" <<BUILDYAP
+            cat - > yap-build.sh <<BUILDYAP
 #!/bin/bash
 
 # Yap Build File Created Automatically by yap ${yap_version}
@@ -25,10 +48,10 @@ BUILDYAP
                 local i=""
                 local IFS=$" "
                 for i in $(cat ${tmpd}/source) ; do
-                    echo ". \"${yap_lib}/yap/${i}.sh\"" >> ./"yap-build.sh"
+                    echo ". \"${yap_lib}/yap/${i}.sh\"" >> yap-build.sh
                 done
             fi
-            echo "" >> ./"yap-build.sh"
+            echo "" >> yap-build.sh
             cat ./"yap-build.sh"
             cat 
         ;;
