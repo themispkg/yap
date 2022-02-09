@@ -30,6 +30,7 @@ check gcc
 check install
 check awk
 check mktemp
+check xargs
 check chmod
 check chown
 check cp

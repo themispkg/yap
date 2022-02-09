@@ -53,7 +53,6 @@ BUILDYAP
             fi
             echo "" >> yap-build.sh
             cat ./"yap-build.sh"
-            cat 
         ;;
     esac
     yap:core:die "0"
