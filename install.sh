@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Install script for yap created manually.
-# Pre-Reqs: gawk, GNUcore-utils
+# Pre-Reqs: gawk, GNUcore-utils, findutils, git, gcc, tar
 #
 # Builded structures:
 #			directories:
