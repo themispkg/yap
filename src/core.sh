@@ -20,7 +20,7 @@ yap:core:getlib() {
             elif [[ -f "${yap_lib}/${@:i:1}" ]] ; then
                 source "${yap_lib}/${@:i:1}"
             else
-                echo -e "\033[0;31mFatal:\033[0m couldn not sourcing '${@:i:1}'!"
+                echo -e "\033[0;31mFatal:\033[0m could not sourcing '${@:i:1}'!"
                 yap:core:die "1"
             fi
         done
@@ -46,7 +46,7 @@ yap:core:chkimport() {
         local IFS=$" "
         for i in $(cat "${tmpd}/source") ; do
             if [[ ! -f "${yap_lib}/yap/${i}.sh" ]] ; then
-                echo -e "\033[0;31mFatal:\033[0m couldn not sourcing '${i}'!"
+                echo -e "\033[0;31mFatal:\033[0m could not sourcing '${i}'!"
                 yap:core:die "1"
             fi
         done

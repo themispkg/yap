@@ -1,4 +1,1 @@
-bb ccc
-
-yap:install cc 
-
+yap:install -m 755 ./yap-test.sh /home/${SUDOUSER}/bin/yap-test

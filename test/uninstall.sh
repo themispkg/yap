@@ -2,7 +2,7 @@
 
 set -e
 
-# install.sh Created Automatically by yap 1.0.0
+# uninstall.sh Created Automatically by yap 1.0.0
 
 
 
@@ -517,4 +517,4 @@ osutil:uninstall() {
 
 
 
-build:install cc 
+reverse:install cc 

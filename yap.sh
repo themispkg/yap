@@ -16,13 +16,14 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-. /usr/local/lib/bash/5.17/yap/init.sh || { echo -e "\033[0;31mFatal:\033[0m could not initalizing in this time." ; exit 1 ; }
+. /usr/local/lib/bash/5.17/yap/init.sh || { echo -e "\033[0;31mFatal:\033[0m could not initializing in this time." ; exit 1 ; }
 
 case "${1}" in
     [bB][uU][iI][lL][dD]|--[bB][uU][iI][lL][dD]|-[bB])
-        case "${1}" in
+        case "${2}" in
             [rR][eE][vV][eE][rR][sS][eE]|--[rR][eE][vV][eE][rR][sS][eE]|-[rR])
-                :
+                yap:core:getlib "yap/reverse"
+                yap:reverse:main -gf
             ;;
             *)
                 yap:core:getlib "yap/build"
@@ -31,13 +32,24 @@ case "${1}" in
         esac
     ;;
     [rR][eE][vV][eE][rR][sS][eE]|--[rR][eE][vV][eE][rR][sS][eE]|-[rR])
-        :
+        yap:core:getlib "yap/reverse"
+        yap:reverse:main
     ;;
     [vV][eE][rR][sS][iI][oO][nN]|--[vV][eE][rR][sS][iI][oO][nN]|-[vV])
-        :
+        echo "yap - ${yap_version} / themispkg 10-02-2022"
     ;;
     [hH][eE][lL][pP]|--[hH][eE][lL][pP]|-[hH])
-        :
+        echo "there are 5 options: --build, --reverse, --version, --help, *
+--build: it's generate the 'install.sh' like configuration file by GNU automake. Also there are 1 sub option called as '--reverse'.
+
+--reverse: uninstall any program.
+
+--version: show's current version of yap (${yap_version}).
+
+--help: show's this text.
+
+*: install any program.
+"
     ;;
     *)
         yap:core:getlib "yap/build"

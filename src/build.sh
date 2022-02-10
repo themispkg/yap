@@ -10,7 +10,9 @@ yap:build:main() {
             cat - > install.sh <<INSTALLFILE
 #!/bin/bash
 
-# Yap Install File Created Automatically by yap ${yap_version}
+set -e
+
+# install.sh Created Automatically by yap ${yap_version}
 
 INSTALLFILE
             cat "${yap_lib}/colorsh.sh" | grep -v '^#' >> install.sh
@@ -31,12 +33,15 @@ INSTALLFILE
                 done
             fi
             echo "" >> install.sh
+            cat "${tmpd}/build" | sed 's/yap:/build:/' >> install.sh
         ;;
         *)
             cat - > yap-build.sh <<BUILDYAP
 #!/bin/bash
 
-# Yap Build File Created Automatically by yap ${yap_version}
+set -e
+
+# yap-build.sh Created Automatically by yap ${yap_version}
 
 . "${yap_lib}/colorsh.sh"
 . "${yap_lib}/tuiutils.sh"
@@ -52,14 +57,9 @@ BUILDYAP
                 done
             fi
             echo "" >> yap-build.sh
-            cat ./"yap-build.sh"
+            cat "${tmpd}/build" | sed 's/yap:/build:/' >> yap-build.sh
+            bash ./yap-build.sh || yap:core:die "1"
         ;;
     esac
     yap:core:die "0"
 }
-
-# TODO:
-# Generate full argümanı source kaynaklarını da kapsayarak yeni bir dosya oluşturur adı da 
-# 'install.sh' olur ileriki zamanlarda uninstall'ı da çıkartılabilir
-#
-# Normal kullanımı ise 'yap-build.sh' dosyası hazırlanarak çalıştırılır.

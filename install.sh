@@ -9,6 +9,9 @@
 #			specific files:
 #					/usr/bin/yap
 
+# Ey peygamber! Eşlerine şöyle de: “Dünya hayatını ve güzelliklerini istiyorsanız gelin size bir şeyler vereyim sonra da güzellikle sizi serbest bırakayım.
+# Yok eğer Allah’ı, resulünü ve âhiret yurdunu istiyorsanız şunu bilin ki Allah, içinizden güzel davrananlara büyük bir ödül hazırlamıştır.” --ahzab 28-29
+
 export cwd="${PWD}"
 
 [[ "${UID}" != 0 ]] && { echo "Run this with root privalages!" ; exit 1 ;}

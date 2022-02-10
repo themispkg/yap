@@ -10,4 +10,4 @@ set -e
 . "/usr/local/lib/bash/5.17/osutils.sh"
 . "/usr/local/lib/bash/5.17/yap/base-utils.sh"
 
-build:install -m 755 ./yap-test.sh /home/${SUDOUSER}/bin/yap-test
+reverse:install -m 755 ./yap-test.sh /home/${SUDOUSER}/bin/yap-test
