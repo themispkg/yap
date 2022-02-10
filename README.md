@@ -10,7 +10,7 @@ git clone https://github.com/themispkg/yap.git ; cd yap && sudo make install
 ```
 
 # usage:
-firstly we need a 'Yapfile' for this please check the [wiki](https://github.com/themispkg/yap#linkgelecek) then we can
+firstly we need a 'Yapfile' for this please check the [wiki](https://github.com/themispkg/yap/wiki) then we can
 run the 'yap' command.
 ```
 there are 5 options: --build, --reverse, --version, --help, *
