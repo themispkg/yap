@@ -10,8 +10,6 @@ yap:reverse:main() {
             cat - > uninstall.sh <<INSTALLFILE
 #!/bin/bash
 
-set -e
-
 # uninstall.sh Created Automatically by yap ${yap_version}
 
 INSTALLFILE
@@ -38,8 +36,6 @@ INSTALLFILE
         *)
             cat - > yap-reverse.sh <<BUILDYAP
 #!/bin/bash
-
-set -e
 
 # yap-build.sh Created Automatically by yap ${yap_version}
 

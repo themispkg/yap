@@ -10,8 +10,6 @@ yap:build:main() {
             cat - > install.sh <<INSTALLFILE
 #!/bin/bash
 
-set -e
-
 # install.sh Created Automatically by yap ${yap_version}
 
 INSTALLFILE
@@ -38,8 +36,6 @@ INSTALLFILE
         *)
             cat - > yap-build.sh <<BUILDYAP
 #!/bin/bash
-
-set -e
 
 # yap-build.sh Created Automatically by yap ${yap_version}
 

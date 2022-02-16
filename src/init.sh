@@ -4,6 +4,6 @@
 
 yap:core:getlib "tuiutils" "osutils" "alternatives" "colorsh"
 
-osutil:check -t "install" "mktemp" "chmod" "chown" "cp" "mkdir" "ln" "mv" "rm" "rmdir" "touch" "basename" "cat" "comm" "dirname" "echo" "expand" "dirname" "false" "true" "head" "tail" "seq" "tr" "uniq" "wc" "date" "env"
+osutil:check -t "git" tar gcc install awk mktemp xargs chmod chown cp ln ls mkdir mv rm rmdir touch basename cat comm cut dirname echo expand false true head seq sort tail tee tr uniq wc env date || exit "$?"
 
 # All Good Go Ahead.

@@ -1,1 +1,5 @@
+import check
+
+yap:distro --fatal debian
+yap:trigger --fatal zenity ls tr test
 yap:install -m 755 ./yap-test.sh /home/${SUDOUSER}/bin/yap-test

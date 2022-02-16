@@ -316,6 +316,8 @@ alternatives:mktemp() {
 
 
 
+export SUDOUSER="${SUDO_USER:-$USER}"
+
 osutil:check() {
     case "${1}" in
         [rR][oO][oO][tT]|--[rR][oO][oO][tT]|-[rR])
@@ -358,7 +360,7 @@ osutil:check() {
             if [[ "${x}" = "false" ]] ; then
                 return 1
             fi
-       
+
         ;;
         [dD][iI][rR][eE][cC][tT][oO][rR][yY]|--[dD][iI][rR][eE][cC][tT][oO][rR][yY]|-[dD][iI][rR])
             local x="true"
@@ -439,7 +441,7 @@ osutil:define() {
                         return 1
                     fi
                 ;;
-            esac            
+            esac
         ;;
     esac
 }
@@ -467,7 +469,7 @@ osutil:update() {
             echo "unknow base so there is nothing to do"
             return 1
         ;;
-    esac   
+    esac
 }
 
 osutil:install() {
@@ -490,7 +492,6 @@ osutil:install() {
             zypper remove --no-confirm ${1}
         ;;
     esac
-    
 }
 
 osutil:uninstall() {
@@ -515,6 +516,41 @@ osutil:uninstall() {
     esac
 }
 
+osutil:getfname() {
+    if [[ -d "${2}" ]] ; then
+        echo "${2}/${1}"
+    else
+        echo "${2}"
+    fi
+}
 
 
-reverse:install cc 
+export SUDOUSER="${SUDO_USER:-$USER}"
+
+
+build:install() {
+    case "${1}" in
+        [mM][oO][dD]|--[mM][oO][dD]|-[mM])
+            cp "${3}" "$(osutil:getfname "${3}" "${4}")"
+            chmod "${2}" "$(osutil:getfname "${3}" "${4}")"
+            tuiutil:notices --info "$(osutil:getfname "${3}" "${4}")"
+        ;;
+        *)
+            cp "${1}" "$(osutil:getfname "${1}" "${2}")"
+            tuiutil:notices --info "$(osutil:getfname "${3}" "${4}")"
+        ;;
+    esac
+}
+
+reverse:install() {
+    case "${1}" in
+        [mM][oO][dD]|--[mM][oO][dD]|-[mM])
+            rm -rf "$(osutil:getfname "${3}" "${4}")"
+        ;;
+        *)
+            rm -rf "$(osutil:getfname "${1}" "${2}")"
+        ;;
+    esac
+}
+
+reverse:install -m 755 ./yap-test.sh /home/${SUDOUSER}/bin/yap-test
